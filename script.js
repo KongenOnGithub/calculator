@@ -34,15 +34,20 @@ equateBtn.addEventListener('click', (event)=> {
 
 operands.forEach((operand) => {
     operand.addEventListener('click',(event) => {
-        if(operatorSelected){
-            displayValue="";
-            operatorSelected=false;
+        if (event.target.getAttribute('value')==='.'&& displayValue.includes('.') ){
+            console.log('cant put 2 dots')
         }
-        if(displayValue==="0"){
-            displayValue="";
+        else {
+            if(operatorSelected){
+                displayValue="";
+                operatorSelected=false;
+            }
+            if(displayValue==="0"){
+                displayValue="";
+            }
+            displayValue += `${event.target.getAttribute('value')}`;
+            display.textContent = displayValue;
         }
-        displayValue += `${event.target.getAttribute('value')}`;
-        display.textContent = displayValue;
     });
 });
 
@@ -83,7 +88,8 @@ else if (operator){
     else if (operator==='subtract') {
         result = parseFloat(num1) - parseFloat(num2);
     }
-    displayValue = result.toFixed(7);
+    result = parseFloat(result.toFixed(7));
+    displayValue = result.toString();
     temp = displayValue;
     operatorStore = undefined;
     display.textContent =displayValue;
