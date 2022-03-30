@@ -83,7 +83,7 @@ else if (operator){
     else if (operator==='subtract') {
         result = parseFloat(num1) - parseFloat(num2);
     }
-    displayValue = result.toString();
+    displayValue = result.toFixed(7);
     temp = displayValue;
     operatorStore = undefined;
     display.textContent =displayValue;
